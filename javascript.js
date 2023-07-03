@@ -1,32 +1,15 @@
 //first of all, create a gameboard
-const gameboard = ((arr)=>
-{
-    {
-        let arr = [];
-        let columnsize = 8
 
-            let value = 0;
-            // creating two-dimensional array
-            for (let i = 0; i < columnsize; i++) {
-                arr[i] = [];
-            for (let j = 0; j < columnsize; j++) {
-                arr[i][j] = j;
-            }
-            }
-            return {arr}
-    }
-})();
-class Knight {
-    constructor(position)
-    {
-        this.position = position
-        this.possibleMoves = createMoves(position)
-    }
-}
-console.log(gameboard.arr);
+class Node {
+    constructor(position) {
+      this.position = position;
+      this.possibleMoves = null
+      
+  }
+  }
+
 //idea for making moves from the knight
 //first get the original positin
-let position = [7,5]
 const createMoves = (position)=>{
     let operationArray = [2,-1,2,1,1,2,1,-2,-2,1,-2,-1,-1,2,-1,-2]
     let possibleMoves = [];
@@ -44,8 +27,34 @@ const createMoves = (position)=>{
     return possibleMoves
 }
 
-let newKnight = new Knight([3,4])
-const moveKnight = ()=>
-{
-    newKnight.position = newKnight.possibleMoves[]
+const createGraph = (position,destination)=>{
+    let newNode = new Node(position)
+    let queue = [newNode]
+   
+    let historyMoves = []
+    newNode.possibleMoves = createMoves(position)
+    while(queue.length !== 0)
+    {
+        
+        let current = queue.shift()
+        console.log(current.position)
+        if(current.position[0] === destination[0] && current.position[1] === destination[1])
+        {
+            return current
+        }
+
+        for(let i in current.possibleMoves)
+        {
+
+            let newNode = new Node(current.possibleMoves[i])
+            
+            newNode.possibleMoves = createMoves(current.position)
+            queue.push(newNode)
+
+        }
+    }
+}
+console.log(createGraph([0,0],[3,3]))
+const knightMoves = (position,endPoint)=>{
+
 }
