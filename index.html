@@ -5,8 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id = "container">
+        <div id ="title">
+        Find the shortest path of the Knight to a position
+    </div>
+        <div id ="board">
+        <img src ="knight.png"  alt="Knight board" >
+        </div>
+        <div class = "positions">
+        <div id ="initialPos">[x1,y1]</div>
+        <div id = "arrow">-></div>
+        <div id ="endPos">[x2,y2]</div>
+        </div>
+        
+        <div class = "div">Insert the positions: 
+        
+        <form id ="form">
+            <label>x1</label>
+            <input type ="number" id ="x1" max="7">
+            <label>y1</label>
+            <input type ="number" id ="y1" max="7">
+            <label>x2</label>
+            <input type ="number" id ="x2" max="7">
+            <label>y2</label>
+            <input type ="number" id ="y2" max="7">
+            <input type = "submit" id ="submit">
+        </form>
+        <div id = "result">Shortest Path: </div>
+    
+    </div>
     <script src = "javascript.js"></script>
 </body>
 </html>

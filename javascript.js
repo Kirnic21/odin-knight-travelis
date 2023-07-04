@@ -1,5 +1,28 @@
-//first of all, create a gameboard
+const submit = document.querySelector("#form")
+const initialPos = document.querySelector("#initialPos")
+const endPos = document.querySelector("#endPos")
 
+const container = document.querySelector("#container")
+const result = document.querySelector("#result")
+
+submit.addEventListener("submit",(event)=>{
+    event.preventDefault()
+    let value1 = parseInt(document.querySelector("#x1").value)
+    let value2 = parseInt(document.querySelector("#y1").value)
+    let value3 = parseInt(document.querySelector("#x2").value)
+    let value4 = parseInt(document.querySelector("#y2").value)
+    let shortPath = knightMoves([value1,value2],[value3,value4])
+    let shortPathString = ""
+    initialPos.textContent = "["+value1+","+value2+"]"
+    endPos.textContent = "["+value3+","+value4+"]"
+    for(let i in shortPath)
+    {
+        shortPathString += "["+shortPath[i]+"]"
+    }
+    result.textContent = "Shortest Path:"+shortPathString
+    
+    container.appendChild(result)
+})
 class Node {
     constructor(position) {
       this.position = position;
@@ -8,10 +31,8 @@ class Node {
   }
   }
 
-//idea for making moves from the knight
-//first get the original positin
 const createMoves = (position)=>{
-    let operationArray = [2,-1,2,1,1,2,1,-2,-2,1,-2,-1,-1,2,-1,-2]
+    let operationArray = [1,2,2,1,2,-1,1,-2,-1,-2,-2,-1,-1,-2,-2,1,-1,2]
     let possibleMoves = [];
     for(let i = 0; i<16 ;i=i+2)
     {   let positionCopy = []
@@ -26,7 +47,8 @@ const createMoves = (position)=>{
     }
     return possibleMoves
 }
-
+console.log(createMoves([4,5]))
+console.log(createMoves([6,4]))
 const avoidRepetition = (current,repeatedNode)=>{
     for(let i in repeatedNode)
     {

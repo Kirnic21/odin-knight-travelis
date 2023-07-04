@@ -1,0 +1,15 @@
+.positions{
+    display: flex;
+    justify-content: center;
+}
+#board{
+    display: flex;
+    justify-content: center;
+}
+#title{
+
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+
+}
